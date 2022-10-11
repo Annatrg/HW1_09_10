@@ -2,6 +2,7 @@
 from selenium import webdriver
 import unittest
 from group import Group
+
 class TestAddGroup(unittest.TestCase):
     def setUp(self):
         self.wd = webdriver.Firefox(firefox_binary="C:\\Program Files\\Mozilla Firefox\\firefox.exe")
