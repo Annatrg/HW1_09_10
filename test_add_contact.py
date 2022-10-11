@@ -14,36 +14,37 @@ class TestAddContact(unittest.TestCase):
     def open_home_page(self, wd):
         wd.get("http://localhost/addressbook/")
 
-    def login(self, wd):
+    def login(self, wd, login, password):
         wd.find_element_by_name("user").click()
         wd.find_element_by_name("user").clear()
-        wd.find_element_by_name("user").send_keys("admin")
+        wd.find_element_by_name("user").send_keys(login)
         wd.find_element_by_name("pass").clear()
-        wd.find_element_by_name("pass").send_keys("secret")
+        wd.find_element_by_name("pass").send_keys(password)
         wd.find_element_by_id("LoginForm").submit()
 
-    def add_new_contact(self, wd):
+    def add_new_contact(self, wd, First_name="Anna", Last_name="Torgova", Address="Spb", mobile_phone="79657989864",
+                        email="torgova-anna@mail.ru"):
         # Enter your name
         wd.find_element_by_link_text("add new").click()
         wd.find_element_by_name("firstname").click()
         wd.find_element_by_name("firstname").clear()
-        wd.find_element_by_name("firstname").send_keys("Anna")
+        wd.find_element_by_name("firstname").send_keys(First_name)
         # Enter your Last name
         wd.find_element_by_name("lastname").click()
         wd.find_element_by_name("lastname").clear()
-        wd.find_element_by_name("lastname").send_keys("Torgova")
+        wd.find_element_by_name("lastname").send_keys(Last_name)
         # Enter your address
         wd.find_element_by_name("address").click()
         wd.find_element_by_name("address").clear()
-        wd.find_element_by_name("address").send_keys("Spb")
+        wd.find_element_by_name("address").send_keys(Address)
         # Enter your mobile phone
         wd.find_element_by_name("mobile").click()
         wd.find_element_by_name("mobile").clear()
-        wd.find_element_by_name("mobile").send_keys("79657989864")
+        wd.find_element_by_name("mobile").send_keys(mobile_phone)
         # Enter your email
         wd.find_element_by_name("email").click()
         wd.find_element_by_name("email").clear()
-        wd.find_element_by_name("email").send_keys("torgova-anna@mail.ru")
+        wd.find_element_by_name("email").send_keys(email)
         # enter your bithday
         wd.find_element_by_name("bday").click()
         Select(wd.find_element_by_name("bday")).select_by_visible_text("26")
@@ -63,11 +64,11 @@ class TestAddContact(unittest.TestCase):
 
     def logout(self, wd):
         wd.find_element_by_link_text("Logout").click()
-    
+
     def test_add_contact(self):
         wd = self.wd
         self.open_home_page(wd)
-        self.login(wd)
+        self.login(wd, login="admin", password="secret")
         self.add_new_contact(wd)
         self.submit_contact_creation(wd)
         self.return_to_home_page(wd)
