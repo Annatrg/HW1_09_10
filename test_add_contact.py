@@ -2,6 +2,7 @@
 from selenium import webdriver
 from selenium.webdriver.support.ui import Select
 import unittest
+from new_contact import New_contact
 
 class TestAddContact(unittest.TestCase):
     def setUp(self):
@@ -22,37 +23,39 @@ class TestAddContact(unittest.TestCase):
         wd.find_element_by_name("pass").send_keys(password)
         wd.find_element_by_id("LoginForm").submit()
 
-    def add_new_contact(self, wd, First_name, Last_name, Address, mobile_phone, email, day_of_birth, month_of_birth,
-                        year_of_birth):
+    def add_new_contact(self, wd, new_contact):
         # Enter your name
         wd.find_element_by_link_text("add new").click()
         wd.find_element_by_name("firstname").click()
         wd.find_element_by_name("firstname").clear()
-        wd.find_element_by_name("firstname").send_keys(First_name)
+        wd.find_element_by_name("firstname").send_keys(new_contact.First_name)
         # Enter your Last name
         wd.find_element_by_name("lastname").click()
         wd.find_element_by_name("lastname").clear()
-        wd.find_element_by_name("lastname").send_keys(Last_name)
+        wd.find_element_by_name("lastname").send_keys(new_contact.Last_name)
         # Enter your address
         wd.find_element_by_name("address").click()
         wd.find_element_by_name("address").clear()
-        wd.find_element_by_name("address").send_keys(Address)
+        wd.find_element_by_name("address").send_keys(new_contact.Address)
         # Enter your mobile phone
         wd.find_element_by_name("mobile").click()
         wd.find_element_by_name("mobile").clear()
-        wd.find_element_by_name("mobile").send_keys(mobile_phone)
+        wd.find_element_by_name("mobile").send_keys(new_contact.mobile_phone)
         # Enter your email
         wd.find_element_by_name("email").click()
         wd.find_element_by_name("email").clear()
-        wd.find_element_by_name("email").send_keys(email)
+        wd.find_element_by_name("email").send_keys(new_contact.email)
         # enter your bithday
+            # day
         wd.find_element_by_name("bday").click()
-        Select(wd.find_element_by_name("bday")).select_by_visible_text(day_of_birth)
+        Select(wd.find_element_by_name("bday")).select_by_visible_text(new_contact.day_of_birth)
+            # month
         wd.find_element_by_name("bmonth").click()
-        Select(wd.find_element_by_name("bmonth")).select_by_visible_text(month_of_birth)
+        Select(wd.find_element_by_name("bmonth")).select_by_visible_text(new_contact.month_of_birth)
+            # year
         wd.find_element_by_name("byear").click()
         wd.find_element_by_name("byear").clear()
-        wd.find_element_by_name("byear").send_keys(year_of_birth)
+        wd.find_element_by_name("byear").send_keys(new_contact.year_of_birth)
 
     def submit_contact_creation(self, wd):
         wd.find_element_by_name("submit").click()
@@ -67,8 +70,8 @@ class TestAddContact(unittest.TestCase):
         wd = self.wd
         self.open_home_page(wd)
         self.login(wd, login="admin", password="secret")
-        self.add_new_contact(wd, First_name="Anna", Last_name="Torgova", Address="Spb", mobile_phone="79657989864", email="torgova-anna@mail.ru", day_of_birth="26", month_of_birth="November",
-                             year_of_birth="1996")
+        self.add_new_contact(wd, New_contact(First_name="Anna", Last_name="Torgova", Address="Spb", mobile_phone="79657989864", email="torgova-anna@mail.ru", day_of_birth="26", month_of_birth="November",
+                             year_of_birth="1996"))
         self.submit_contact_creation(wd)
         self.return_to_home_page(wd)
         self.logout(wd)
