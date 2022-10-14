@@ -12,11 +12,13 @@ class TestAddContact(unittest.TestCase):
         self.verificationErrors = []
         self.accept_next_alert = True
 
-    def open_home_page(self, wd):
+    def open_home_page(self):
+        wd = self.wd
         wd.get("http://localhost/addressbook/")
 
-    def login(self, wd, login, password):
-        self.open_home_page(wd)
+    def login(self, login, password):
+        wd = self.wd
+        self.open_home_page()
         wd.find_element_by_name("user").click()
         wd.find_element_by_name("user").clear()
         wd.find_element_by_name("user").send_keys(login)
@@ -24,7 +26,8 @@ class TestAddContact(unittest.TestCase):
         wd.find_element_by_name("pass").send_keys(password)
         wd.find_element_by_id("LoginForm").submit()
 
-    def add_new_contact(self, wd, contact):
+    def add_new_contact(self, contact):
+        wd = self.wd
         # Enter your name
         wd.find_element_by_link_text("add new").click()
         wd.find_element_by_name("firstname").click()
@@ -57,25 +60,27 @@ class TestAddContact(unittest.TestCase):
         wd.find_element_by_name("byear").click()
         wd.find_element_by_name("byear").clear()
         wd.find_element_by_name("byear").send_keys(contact.year_of_birth)
-        self.submit_contact_creation(wd)
-        self.return_to_home_page(wd)
+        self.submit_contact_creation()
+        self.return_to_home_page()
 
-    def submit_contact_creation(self, wd):
+    def submit_contact_creation(self):
+        wd = self.wd
         wd.find_element_by_name("submit").click()
 
 
-    def return_to_home_page(self, wd):
+    def return_to_home_page(self):
+        wd = self.wd
         wd.find_element_by_link_text("home page").click()
 
-    def logout(self, wd):
+    def logout(self):
+        wd = self.wd
         wd.find_element_by_link_text("Logout").click()
 
     def test_add_contact(self):
-        wd = self.wd
-        self.login(wd, login="admin", password="secret")
-        self.add_new_contact(wd, Contact(first_name="Anna", last_name="Torgova", address="Spb", mobile_phone="79657989864", email="torgova-anna@mail.ru", day_of_birth="26", month_of_birth="November",
+        self.login(login="admin", password="secret")
+        self.add_new_contact(Contact(first_name="Anna", last_name="Torgova", address="Spb", mobile_phone="79657989864", email="torgova-anna@mail.ru", day_of_birth="26", month_of_birth="November",
                              year_of_birth="1996"))
-        self.logout(wd)
+        self.logout()
 
 
     def tearDown(self):
