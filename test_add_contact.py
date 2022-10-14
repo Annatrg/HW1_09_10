@@ -16,6 +16,7 @@ class TestAddContact(unittest.TestCase):
         wd.get("http://localhost/addressbook/")
 
     def login(self, wd, login, password):
+        self.open_home_page(wd)
         wd.find_element_by_name("user").click()
         wd.find_element_by_name("user").clear()
         wd.find_element_by_name("user").send_keys(login)
@@ -56,9 +57,12 @@ class TestAddContact(unittest.TestCase):
         wd.find_element_by_name("byear").click()
         wd.find_element_by_name("byear").clear()
         wd.find_element_by_name("byear").send_keys(contact.year_of_birth)
+        self.submit_contact_creation(wd)
+        self.return_to_home_page(wd)
 
     def submit_contact_creation(self, wd):
         wd.find_element_by_name("submit").click()
+
 
     def return_to_home_page(self, wd):
         wd.find_element_by_link_text("home page").click()
@@ -68,12 +72,9 @@ class TestAddContact(unittest.TestCase):
 
     def test_add_contact(self):
         wd = self.wd
-        self.open_home_page(wd)
         self.login(wd, login="admin", password="secret")
         self.add_new_contact(wd, Contact(first_name="Anna", last_name="Torgova", address="Spb", mobile_phone="79657989864", email="torgova-anna@mail.ru", day_of_birth="26", month_of_birth="November",
                              year_of_birth="1996"))
-        self.submit_contact_creation(wd)
-        self.return_to_home_page(wd)
         self.logout(wd)
 
 
