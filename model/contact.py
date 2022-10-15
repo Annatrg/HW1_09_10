@@ -11,3 +11,4 @@ class Contact:
         self.month_of_birth = month_of_birth
         self.year_of_birth = year_of_birth
 
+
