@@ -1,7 +1,4 @@
-
-
-def test_delete_first_contact(app):
+def test_delete_first_group(app):
     app.session.login(login="admin", password="secret")
-    app.contact.delete_first_contact()
+    app.group.delete_first_group()
     app.session.logout()
-
