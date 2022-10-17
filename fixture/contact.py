@@ -93,3 +93,4 @@ class ContactHelper:
     def submit_contact_creation(self):
         wd = self.app.wd
         wd.find_element_by_name("submit").click()
+
