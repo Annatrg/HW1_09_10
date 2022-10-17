@@ -1,3 +1,4 @@
+
 from model.contact import Contact
 
 def test_first_contact_change(app):
