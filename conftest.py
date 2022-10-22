@@ -3,7 +3,7 @@ import pytest
 from fixture.application import Application
 
 
-@pytest.fixture
+@pytest.fixture(scope="session")
 def app(request):
     fixture = Application()
     fixture.session.login(login="admin", password="secret")

@@ -5,7 +5,6 @@ from fixture.contact import ContactHelper
 from fixture.navigation import NavigationHelper
 from fixture.group import GroupHelper
 
-
 class Application:
     def __init__(self):
         self.wd = webdriver.Firefox(firefox_binary="C:\\Program Files\\Mozilla Firefox\\firefox.exe")
