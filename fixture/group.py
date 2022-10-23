@@ -1,4 +1,3 @@
-
 class GroupHelper:
 
     def __init__(self, app):
