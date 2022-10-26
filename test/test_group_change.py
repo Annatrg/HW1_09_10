@@ -1,6 +1,5 @@
 from model.group import Group
 
-
 def test_group_change(app):
     if app.group.count() == 0:
         app.group.create(Group(name="test_del"))
@@ -13,9 +12,7 @@ def test_group_change_name(app):
     app.group.first_group_change(Group(name="New group"))
 
 
-
 def test_group_change_header(app):
     if app.group.count() == 0:
         app.group.create(Group(name="test_del"))
     app.group.first_group_change(Group(header="New header"))
-

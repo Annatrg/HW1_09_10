@@ -10,4 +10,3 @@ class Contact:
         self.day_of_birth = day_of_birth
         self.month_of_birth = month_of_birth
         self.year_of_birth = year_of_birth
-
