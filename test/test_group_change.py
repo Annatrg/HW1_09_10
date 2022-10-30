@@ -1,3 +1,4 @@
+
 from model.group import Group
 
 def test_group_change(app):
