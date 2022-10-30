@@ -1,6 +1,7 @@
 from selenium.webdriver.support.ui import Select
 from model.contact import Contact
 
+
 class ContactHelper:
 
     def __init__(self, app):
@@ -17,22 +18,35 @@ class ContactHelper:
         self.contact_cache = None
 
     def delete_first_contact(self):
+        self.delete_contact_by_index(0)
+
+    def delete_contact_by_index(self, index):
         wd = self.app.wd
         # open contacts page
         wd.find_element_by_xpath("//img[@alt='Addressbook']").click()
-        # select first contact
-        wd.find_element_by_name("selected[]").click()
+        self.select_contact_by_index(index)
         # submit deletion
         wd.find_element_by_xpath("//input[@value='Delete']").click()
         wd.switch_to.alert.accept()
         self.contact_cache = None
 
+    def select_first_contact(self):
+        wd = self.app.wd
+        wd.find_element_by_name("selected[]").click()
+
+    def select_contact_by_index(self, index):
+        wd = self.app.wd
+        wd.find_elements_by_name("selected[]")[index].click()
+
     def first_contact_change(self, contact):
+        self.contact_change_by_index(0)
+
+
+    def contact_change_by_index(self, index, contact):
         wd = self.app.wd
         # open contact page
         wd.find_element_by_xpath("//img[@alt='Addressbook']").click()
-        # contact change
-        wd.find_element_by_xpath("//img[@alt='Edit']").click()
+        wd.find_elements_by_xpath("//img[@alt='Edit']")[index].click()
         self.user_information(contact, wd)
         # save changes
         wd.find_element_by_name("update").click()
