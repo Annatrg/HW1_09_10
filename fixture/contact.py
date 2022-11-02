@@ -106,4 +106,4 @@ class ContactHelper:
                 first_name = element.find_element_by_xpath("td[3]").text
                 last_name = element.find_element_by_xpath("td[2]").text
                 self.contact_cache.append(Contact(first_name=first_name, last_name=last_name, id=id))
-        return self.contact_cache
+        return list(self.contact_cache)
