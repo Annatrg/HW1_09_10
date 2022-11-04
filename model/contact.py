@@ -14,7 +14,7 @@ class Contact:
         self.home_phone = home_phone
         self.work_phone = work_phone
         self.secondary_phone = secondary_phone
-      #  self.all_phones_from_home_page = all_phones_from_home_page
+        self.all_phones_from_home_page = all_phones_from_home_page
         self.email = email
         self.day_of_birth = day_of_birth
         self.month_of_birth = month_of_birth
