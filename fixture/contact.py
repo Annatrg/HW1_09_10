@@ -69,6 +69,14 @@ class ContactHelper:
         wd.find_element_by_name("mobile").click()
         wd.find_element_by_name("mobile").clear()
         wd.find_element_by_name("mobile").send_keys(contact.mobile_phone)
+        # home phone
+        wd.find_element_by_name("home").click()
+        wd.find_element_by_name("home").clear()
+        wd.find_element_by_name("home").send_keys(contact.home_phone)
+        # work phone
+        wd.find_element_by_name("work").click()
+        wd.find_element_by_name("work").clear()
+        wd.find_element_by_name("work").send_keys(contact.work_phone)
         # email
         wd.find_element_by_name("email").click()
         wd.find_element_by_name("email").clear()
