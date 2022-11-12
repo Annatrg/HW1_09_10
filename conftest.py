@@ -1,5 +1,4 @@
 import os.path
-
 import pytest
 import json
 from fixture.application import Application
