@@ -1,7 +1,6 @@
 from model.contact import Contact
 
 
-
 testdata = [
     Contact(first_name="Anna", last_name="Torgova",
             address="Spb", mobile_phone="79657989864", home_phone="9990099",
