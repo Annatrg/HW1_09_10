@@ -23,4 +23,3 @@ def test_delete_some_group(app):
 #    new_groups = app.group.get_group_list()
 #    old_groups[0:1] = []
 #    assert old_groups == new_groups
-

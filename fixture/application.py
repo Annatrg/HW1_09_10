@@ -14,7 +14,7 @@ class Application:
         else:
             raise ValueError("Unrecognized browser %s" % browser)
         self.wd.implicitly_wait(5)
-        self.base_url = "https://www.google.com/"
+      #  self.base_url = "https://www.google.com/"
         self.session = SessionHelper(self)
         self.contact = ContactHelper(self)
         self.navigation = NavigationHelper(self)

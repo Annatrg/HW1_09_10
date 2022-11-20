@@ -170,3 +170,4 @@ class ContactHelper:
         secondary_phone = re.search("P: (.*)", text).group(1)
         return Contact(home_phone=home_phone, mobile_phone=mobile_phone, work_phone=work_phone,
                        secondary_phone=secondary_phone)
+
