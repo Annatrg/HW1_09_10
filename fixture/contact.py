@@ -225,4 +225,3 @@ class ContactHelper:
         for item in contacts:
             merged_contacts_phone_list.append(self.merge_phones(item))
         return merged_contacts_phone_list
-
