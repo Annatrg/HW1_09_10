@@ -14,3 +14,4 @@ try:
 
 finally:
     connection.close()
+

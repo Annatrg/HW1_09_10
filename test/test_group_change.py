@@ -3,19 +3,23 @@ from model.group import Group
 import random
 
 
-# Не реализовано!! Ошибки
-def test_group_change(app, db, json_groups):
+def test_group_change(app, db, json_groups, check_ui):
     group = json_groups
-    if app.group.count() == 0:
+    #if app.group.count() == 0:
+    if len(db.get_group_list()) == 0:
         app.group.create(group)
     old_groups = db.get_group_list()
-    group.id = random.choice(old_groups).id
+    index = randrange(len(old_groups))
+    # group.id = random.choice(old_groups).id
     group = Group(name="HW7_", header="HW7", footer="test")
-    app.group.group_change_by_id(group) # здесь ругается что не определена new_group_data
-    assert len(old_groups) == app.group.count()
+    group.id = old_groups[index].id
+    app.group.group_change_by_id(group.id, group)
     new_groups = db.get_group_list()
-    old_groups[index] = group  # тут непонятно как указать
+    assert len(old_groups) == app.group.count()
+    old_groups[index] = group
     assert sorted(old_groups, key=Group.id_or_max) == sorted(new_groups, key=Group.id_or_max)
+    if check_ui:
+        assert sorted(new_groups, key=Group.id_or_max) == sorted(app.group.get_group_list(), key=Group.id_or_max)
 
 #def test_group_change(app):
     #if app.group.count() == 0:
