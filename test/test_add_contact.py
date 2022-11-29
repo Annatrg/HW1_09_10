@@ -2,7 +2,7 @@
 
 from model.contact import Contact
 
-# работает и связь с БД, и проверка Check_ui
+
 def test_add_contact(app, db, json_contacts, check_ui):
     contact = json_contacts
     old_contacts = db.get_contact_list()

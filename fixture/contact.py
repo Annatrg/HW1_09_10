@@ -31,7 +31,6 @@ class ContactHelper:
         wd.switch_to.alert.accept()
         self.contact_cache = None
 
-
     def delete_contact_by_id(self, id):
         wd = self.app.wd
         # open contacts page
@@ -54,7 +53,7 @@ class ContactHelper:
         wd = self.app.wd
         wd.find_element_by_css_selector("input[value='%s']" % id).click()
 
-    def first_contact_change(self, contact):
+    def first_contact_change(self):
         self.contact_change_by_index(0)
 
     def contact_change_by_index(self, index, contact):
@@ -225,3 +224,21 @@ class ContactHelper:
         for item in contacts:
             merged_contacts_phone_list.append(self.merge_phones(item))
         return merged_contacts_phone_list
+
+    def add_contact_to_group(self, contacts, groups):
+      #  self.app.navigation.open_home_page()
+        self.select_contact_by_id(contacts.id)
+        self.select_group_to_add(groups.name)
+        self.submit_contact_to_group()
+
+
+    def select_group_to_add(self, contact_in_group):
+        wd = self.app.wd
+        wd.find_element_by_name("to_group").click()
+        Select(wd.find_element_by_name("to_group")).select_by_visible_text(contact_in_group.group_name)
+     #   wd.find_element_by_xpath(f"//select[@name='to_group']/option[@value='{group_id}']").click()
+
+    def submit_contact_to_group(self):
+        wd = self.app.wd
+        #wd.find_element_by_xpath("//input[@name='add']").click()
+        wd.find_element_by_name("add").click()

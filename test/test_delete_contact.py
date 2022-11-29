@@ -3,7 +3,6 @@ from model.contact import Contact
 import random
 
 
-# работает и связь и БД, и проверка Check_ui
 def test_delete_some_contact(app, db, check_ui):
     if len(db.get_contact_list()) == 0:
         app.contact.add(Contact(first_name="Anna", last_name="Torgova", address="Spb", mobile_phone="79657989864",

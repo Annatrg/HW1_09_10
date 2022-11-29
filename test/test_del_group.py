@@ -5,7 +5,6 @@ import random
 from random import randrange
 
 
-# работает только БД. Check_ui - ошибка при сравнении списков (хедер\футер)
 def test_delete_some_group(app, db, check_ui):
     if len(db.get_group_list()) == 0:
         app.group.create(Group(name="test_del"))
