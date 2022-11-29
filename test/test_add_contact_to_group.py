@@ -1,11 +1,7 @@
-from fixture.orm import ORMfixture
 from model.contact import Contact
 from model.group import Group
 import random
-from model.contact_in_group import ContactInGroup
-from random import randrange
 
-# database = ORMfixture(host="127.0.0.1", name="addressbook", user="root", password="")
 
 def test_add_contact_to_group(app, db):
     # проверяем наличие хотя бы одного контакта. Если его нет - создаем

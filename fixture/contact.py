@@ -53,7 +53,7 @@ class ContactHelper:
         wd = self.app.wd
         wd.find_element_by_css_selector("input[value='%s']" % id).click()
 
-    def first_contact_change(self):
+    def first_contact_change(self, contact):
         self.contact_change_by_index(0)
 
     def contact_change_by_index(self, index, contact):
@@ -236,9 +236,7 @@ class ContactHelper:
         wd = self.app.wd
         wd.find_element_by_name("to_group").click()
         Select(wd.find_element_by_name("to_group")).select_by_visible_text(contact_in_group.group_name)
-     #   wd.find_element_by_xpath(f"//select[@name='to_group']/option[@value='{group_id}']").click()
 
     def submit_contact_to_group(self):
         wd = self.app.wd
-        #wd.find_element_by_xpath("//input[@name='add']").click()
         wd.find_element_by_name("add").click()

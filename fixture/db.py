@@ -56,3 +56,4 @@ class DbFixture:
 
     def destroy(self):
         self.connection.close()
+

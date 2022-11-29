@@ -47,3 +47,4 @@ class SessionHelper:
             else:
                 self.logout()
         self.login(login, password)
+
