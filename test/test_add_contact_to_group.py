@@ -24,5 +24,4 @@ def test_add_contact_to_group(app, db):
     group = random.choice(groups)
 
     # добавляем контакт в группу
-    # app.contact.add_contact_to_group(contacts, groups)
-    app.contact.add_contact_to_group(group_name=group.name, contact_id=contact.id)
+    app.contact.add_contact_to_group(contact.id, group.name)

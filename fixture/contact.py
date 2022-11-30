@@ -225,17 +225,16 @@ class ContactHelper:
             merged_contacts_phone_list.append(self.merge_phones(item))
         return merged_contacts_phone_list
 
-    def add_contact_to_group(self, contacts, groups):
-      #  self.app.navigation.open_home_page()
-        self.select_contact_by_id(contacts.id)
-        self.select_group_to_add(groups.name)
+    def add_contact_to_group(self, id, name):
+        self.select_contact_by_id(id)
+        self.select_group_to_add(name)
         self.submit_contact_to_group()
 
 
-    def select_group_to_add(self, contact_in_group):
+    def select_group_to_add(self, group_name):
         wd = self.app.wd
         wd.find_element_by_name("to_group").click()
-        Select(wd.find_element_by_name("to_group")).select_by_visible_text(contact_in_group.group_name)
+        Select(wd.find_element_by_name("to_group")).select_by_visible_text(group_name)
 
     def submit_contact_to_group(self):
         wd = self.app.wd
