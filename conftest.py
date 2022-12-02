@@ -82,3 +82,4 @@ def orm(request):
     db_config = load_config(request.config.getoption("--target"))["db"]
     ormfixture = ORMFixture(host=db_config['host'], name=db_config['name'], user=db_config['user'], password=db_config['password'])
     return ormfixture
+

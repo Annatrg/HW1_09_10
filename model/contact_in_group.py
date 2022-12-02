@@ -18,3 +18,4 @@ class ContactInGroup:
             return int(self.id)
         else:
             return maxsize
+

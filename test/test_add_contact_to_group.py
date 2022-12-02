@@ -22,3 +22,4 @@ def test_add_contact_to_group(app, db):
 
     # добавляем контакт в группу
     app.contact.add_contact_to_group(contact.id, group.name)
+
