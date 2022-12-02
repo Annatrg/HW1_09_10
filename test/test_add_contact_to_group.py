@@ -3,9 +3,9 @@ from model.group import Group
 import random
 
 
-def test_add_contact_to_group(app, db):
+def test_add_contact_to_group(app, db, orm):
     # проверяем наличие хотя бы одного контакта. Если его нет - создаем
-    if db.get_contact_list() == 0:
+    if len(db.get_contact_list()) == 0:
         app.contact.add(Contact(first_name="Anna", last_name="Torgova", address="Spb", mobile_phone="79657989864",
                                 work_phone="9995566", home_phone="8746327", secondary_phone="7635847",
                                 email="torgova-anna@mail.ru", day_of_birth="26", month_of_birth="November",
@@ -23,3 +23,5 @@ def test_add_contact_to_group(app, db):
     # добавляем контакт в группу
     app.contact.add_contact_to_group(contact.id, group.name)
 
+    contacts_in_group = orm.get_contacts_in_group(group)
+    assert contact in contacts_in_group

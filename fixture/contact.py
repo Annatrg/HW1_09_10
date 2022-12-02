@@ -229,6 +229,7 @@ class ContactHelper:
         self.select_contact_by_id(id)
         self.select_group_to_add(name)
         self.submit_contact_to_group()
+        self.app.navigation.open_home_page()
 
 
     def select_group_to_add(self, group_name):

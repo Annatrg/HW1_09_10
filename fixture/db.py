@@ -53,5 +53,10 @@ class DbFixture:
             cursor.close()
             return list
 
+    def get_contact_in_group(self, group):
+        self.get_contact_in_group_list(group)
+
+
+
     def destroy(self):
         self.connection.close()
