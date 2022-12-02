@@ -2,13 +2,12 @@ from sys import maxsize
 
 
 class ContactInGroup:
-    def __init__(self, id=None, group_id=None, group_name=None):
+    def __init__(self, id=None, group_id=None):
         self.id = id
         self.group_id = group_id
-        self.group_name = group_name
 
     def __repr__(self):
-        return "%s:%s:%s" % (self.id, self.group_id, self.group_name)
+        return "%s:%s" % (self.id, self.group_id)
 
     def __eq__(self, other):
         return (self.id is None or other.id is None or self.id == other.id) \

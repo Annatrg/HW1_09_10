@@ -7,8 +7,6 @@ import getopt
 import sys
 
 
-
-
 try:
     opts, args = getopt.getopt(sys.argv[1:], "n:f:", ["number of contacts", "file"])
 except getopt.GetoptError as err:
