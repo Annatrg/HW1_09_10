@@ -232,11 +232,12 @@ class ContactHelper:
         self.app.navigation.open_home_page()
 
 
-    def select_group_to_add(self, group_name):
+    def select_group_to_add(self, group_id):
         wd = self.app.wd
         wd.find_element_by_name("to_group").click()
-        Select(wd.find_element_by_name("to_group")).select_by_visible_text(group_name)
-
+       # Select(wd.find_element_by_name("to_group")).select_by_visible_text(group_name)
+        xpath = f"//select[@name='to_group']/option[@value='{group_id}']"
+        wd.find_element_by_xpath(xpath).click()
     def submit_contact_to_group(self):
         wd = self.app.wd
         wd.find_element_by_name("add").click()
