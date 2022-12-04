@@ -226,10 +226,11 @@ class ContactHelper:
         return merged_contacts_phone_list
 
     def add_contact_to_group(self, id, name):
+        self.app.navigation.return_to_home_page()
         self.select_contact_by_id(id)
         self.select_group_to_add(name)
         self.submit_contact_to_group()
-        self.app.navigation.open_home_page()
+
 
 
     def select_group_to_add(self, group_id):
@@ -243,6 +244,7 @@ class ContactHelper:
         wd.find_element_by_name("add").click()
 
     def delete_contact_from_group(self, contact_with_group):
+        self.app.navigation.return_to_home_page()
         self.select_group_with_contact(contact_with_group.group_id)
         self.select_contact_by_id(contact_with_group.id)
         self.submit_delete_contact_to_group()

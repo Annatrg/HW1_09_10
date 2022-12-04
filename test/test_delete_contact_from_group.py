@@ -19,7 +19,8 @@ def test_delete_contact_from_group(app, db, orm):
     contact = random.choice(contacts)
     # Проверяем есть ли контакт в группе
     if len(db.get_contact_in_group_list()) == 0:
-        app.contact.add_contact_to_group(contact.id, group.name)
+        app.contact.add_contact_to_group(contact.id, group.id)
+
     # Сам тест
     contacts_with_groups = db.get_contact_in_group_list()
     contact_with_group = random.choice(contacts_with_groups)
