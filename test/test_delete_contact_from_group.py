@@ -28,3 +28,4 @@ def test_delete_contact_from_group(app, db, orm):
 
     contacts_in_group = orm.get_contacts_in_group(group)
     assert contact not in contacts_in_group
+

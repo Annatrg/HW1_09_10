@@ -225,13 +225,17 @@ class ContactHelper:
             merged_contacts_phone_list.append(self.merge_phones(item))
         return merged_contacts_phone_list
 
-    def add_contact_to_group(self, id, name):
+    #def add_contact_to_group(self, id, name):
+    #    self.app.navigation.return_to_home_page()
+    #    self.select_contact_by_id(id)
+    #    self.select_group_to_add(name)
+    #    self.submit_contact_to_group()
+
+    def add_contact_to_group(self, contact, group):
         self.app.navigation.return_to_home_page()
-        self.select_contact_by_id(id)
-        self.select_group_to_add(name)
+        self.select_contact_by_id(contact.id)
+        self.select_group_to_add(group.id)
         self.submit_contact_to_group()
-
-
 
     def select_group_to_add(self, group_id):
         wd = self.app.wd
@@ -239,6 +243,7 @@ class ContactHelper:
        # Select(wd.find_element_by_name("to_group")).select_by_visible_text(group_name)
         xpath = f"//select[@name='to_group']/option[@value='{group_id}']"
         wd.find_element_by_xpath(xpath).click()
+
     def submit_contact_to_group(self):
         wd = self.app.wd
         wd.find_element_by_name("add").click()

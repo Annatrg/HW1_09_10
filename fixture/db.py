@@ -57,6 +57,5 @@ class DbFixture:
         self.get_contact_in_group_list(group)
 
 
-
     def destroy(self):
         self.connection.close()
