@@ -11,8 +11,8 @@ def test_add_contact_to_group(app, db, orm):
                                 email="torgova-anna@mail.ru", day_of_birth="26", month_of_birth="November",
                                 year_of_birth="1996"))
     # выбираем случайный контакт
-    contacts = db.get_contact_list()
-    contact = random.choice(contacts)
+  #  contacts = db.get_contact_list()
+   # contact = random.choice(contacts)
     # проверяем наличие хотя бы одной группы. Если её нет - создаем
     if len(db.get_group_list()) == 0:
         app.group.create(Group(name="test_del"))
@@ -22,7 +22,6 @@ def test_add_contact_to_group(app, db, orm):
 
     # добавляем контакт в группу
 
-
     contacts_for_add_in_group = orm.get_contacts_not_in_group(group)
     if contacts_for_add_in_group == []:
         app.contact.add(Contact(first_name="Anna", last_name="Torgova", address="Spb", mobile_phone="79657989864",
@@ -30,7 +29,6 @@ def test_add_contact_to_group(app, db, orm):
                                 email="torgova-anna@mail.ru", day_of_birth="26", month_of_birth="November",
                                 year_of_birth="1996"))
         contact_for_add_in_group = orm.get_contacts_not_in_group(group)[0]
-        #contact_for_add_in_group = orm.get_contacts_not_in_group(group)
     else:
         contact_for_add_in_group = random.choice(contacts_for_add_in_group)
 
@@ -39,4 +37,4 @@ def test_add_contact_to_group(app, db, orm):
     app.contact.add_contact_to_group(contact_for_add_in_group, group)
 
     contacts_in_group = orm.get_contacts_in_group(group)
-    assert contact in contacts_in_group
+    assert contact_for_add_in_group in contacts_in_group
