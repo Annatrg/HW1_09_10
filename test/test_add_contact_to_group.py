@@ -38,3 +38,4 @@ def test_add_contact_to_group(app, db, orm):
 
     contacts_in_group = orm.get_contacts_in_group(group)
     assert contact_for_add_in_group in contacts_in_group
+

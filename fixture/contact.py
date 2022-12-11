@@ -233,8 +233,8 @@ class ContactHelper:
 
     def add_contact_to_group(self, contact, group):
         self.app.navigation.return_to_home_page()
-        self.select_contact_by_id(contact)
-        self.select_group_to_add(group)
+        self.select_contact_by_id(contact.id)
+        self.select_group_to_add(group.id)
         self.submit_contact_to_group()
 
     def select_group_to_add(self, group_id):
