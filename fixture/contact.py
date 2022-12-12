@@ -264,4 +264,3 @@ class ContactHelper:
     def submit_delete_contact_to_group(self):
         wd = self.app.wd
         wd.find_element_by_name("remove").click()
-

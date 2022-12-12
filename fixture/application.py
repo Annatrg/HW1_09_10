@@ -14,7 +14,7 @@ class Application:
             self.wd = webdriver.Chrome()
         else:
             raise ValueError("Unrecognized browser %s" % browser)
-        self.wd.implicitly_wait(1)
+        self.wd.implicitly_wait(10)
       #  self.base_url = "https://www.google.com/"
         self.session = SessionHelper(self)
         self.contact = ContactHelper(self)

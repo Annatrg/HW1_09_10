@@ -4,7 +4,6 @@ from model.contact import Contact
 from model.contact_in_group import ContactInGroup
 
 
-
 class DbFixture:
 
     def __init__(self, host, name, user, password):
