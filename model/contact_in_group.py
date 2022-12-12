@@ -1,6 +1,7 @@
 from sys import maxsize
 
 
+
 class ContactInGroup:
     def __init__(self, id=None, group_id=None):
         self.id = id
