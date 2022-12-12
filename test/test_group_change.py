@@ -35,6 +35,7 @@ def test_group_change(app, db, json_groups, check_ui):
     #assert sorted(old_groups, key=Group.id_or_max) == sorted(new_groups, key=Group.id_or_max)
 
 
+
 #def test_group_change_name(app):
  #   old_groups = app.group.get_group_list()
   #  if app.group.count() == 0:

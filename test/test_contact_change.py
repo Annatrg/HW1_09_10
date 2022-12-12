@@ -2,6 +2,7 @@ from model.contact import Contact
 from random import randrange
 
 
+
 def test_first_contact_change(app, db, check_ui):
     if db.get_contact_list() == 0:
         app.contact.add(Contact(first_name="Anna", last_name="Torgova", address="Spb", mobile_phone="79657989864",

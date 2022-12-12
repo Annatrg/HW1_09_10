@@ -10,9 +10,3 @@ def test_contacts_on_home_and_edit_page(app):
     assert contact_from_home_page.all_phones_from_home_page == app.contact.merge_phones_like_on_home_page(contact_from_edit_page)
     assert contact_from_home_page.all_emails_from_home_page == app.contact.merge_emails_like_on_home_page(contact_from_edit_page)
 
-
-
-
-
-
-

@@ -16,4 +16,3 @@ def test_data_on_home_page_and_db(app, db):
                app.contact.merge_emails_like_on_home_page(contacts_db[index])
         assert contacts_from_home_page[index].all_phones_from_home_page == \
                app.contact.merge_phones_like_on_home_page(contacts_db[index])
-
